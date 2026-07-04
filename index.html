@@ -1,619 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClipMine</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      color: #29333b;
-      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      line-height: 1.45;
-      background: #fff;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .topbar {
-      height: 80px;
-      padding: 14px 18px 0;
-      background: #fff;
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .brand-nav {
-      display: flex;
-      align-items: center;
-      gap: 38px;
-    }
-
-    .logo {
-      width: 226px;
-      height: 50px;
-    }
-
-    .nav,
-    .account-nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding-top: 18px;
-      color: #545e64;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .search-link {
-      color: #1899dc;
-    }
-
-    .search-link::before {
-      content: "\26b2";
-      margin-right: 7px;
-      color: #7a858b;
-      font-size: 10px;
-    }
-
-    .search-link::after {
-      content: " \25be";
-      font-size: 9px;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 750px;
-      background:
-        linear-gradient(rgba(0, 0, 0, .48), rgba(0, 0, 0, .47)),
-        url("top-section_2180x750.jpg") center center / cover no-repeat;
-      color: #fff;
-      text-align: center;
-    }
-
-    .hero-copy {
-      position: absolute;
-      top: 185px;
-      left: 50%;
-      width: min(700px, calc(100% - 40px));
-      transform: translateX(-50%);
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 1.17;
-    }
-
-    .hero p {
-      width: min(610px, 100%);
-      margin: 34px auto 28px;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .primary-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 220px;
-      height: 60px;
-      color: #fff;
-      background: #1da1dd;
-      font-weight: 600;
-      border: 0;
-    }
-
-    .hero-dots {
-      position: absolute;
-      bottom: 29px;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      width: 100%;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #d8d8d8;
-    }
-
-    .dot.is-active {
-      background: #fff;
-    }
-
-    .section-title {
-      margin: 0;
-      color: #5e666b;
-      font-size: 45px;
-      font-weight: 300;
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    .mini-title {
-      margin: 0;
-      color: #6c747a;
-      font-size: 26px;
-      font-weight: 300;
-      text-align: center;
-    }
-
-    .video-intro {
-      padding: 75px 0 78px;
-      background: #fff;
-    }
-
-    .video-row {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 60px;
-      width: min(1130px, calc(100% - 60px));
-      margin: 52px auto 0;
-    }
-
-    .video-card {
-      flex: 0 0 350px;
-      color: #111;
-    }
-
-    .video-card.center-card {
-      margin-top: -8px;
-    }
-
-    .small-placeholder {
-      width: 20px;
-      height: 20px;
-      margin-bottom: 12px;
-      border: 1px solid #bfc8cc;
-      background:
-        linear-gradient(135deg, transparent 0 42%, #62a86f 43% 47%, transparent 48%),
-        linear-gradient(315deg, transparent 0 44%, #8bb9df 45% 50%, transparent 51%),
-        #fff;
-    }
-
-    .video-thumb {
-      width: 350px;
-      height: 234px;
-      object-fit: cover;
-      margin-bottom: 7px;
-    }
-
-    .video-title {
-      margin: 0 0 10px;
-      font-size: 16px;
-      line-height: 1.38;
-    }
-
-    .meta-line {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 9px;
-      color: #222;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .meta-icon {
-      color: #65737c;
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    .action-bar {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      height: 36px;
-      padding: 0 9px;
-      border-radius: 6px;
-      background: #e5e5e5;
-      color: #111;
-      font-size: 14px;
-    }
-
-    .action-icon {
-      color: #27323a;
-      font-weight: 700;
-    }
-
-    .video-note {
-      width: min(690px, calc(100% - 40px));
-      margin: 86px auto 0;
-      color: #4d5960;
-      font-size: 13px;
-      line-height: 1.32;
-      text-align: center;
-    }
-
-    .features {
-      padding: 0 0 72px;
-      background: #fff;
-    }
-
-    .feature-row {
-      display: flex;
-      justify-content: center;
-      gap: 65px;
-      width: min(1140px, calc(100% - 80px));
-      margin: 44px auto 0;
-    }
-
-    .feature-card {
-      flex: 1 1 0;
-      max-width: 370px;
-      text-align: center;
-    }
-
-    .feature-frame {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 130px;
-      margin-bottom: 24px;
-      border: 1px solid #e3e6e8;
-      border-radius: 3px;
-    }
-
-    .feature-frame img {
-      width: 300px;
-      height: 120px;
-      object-fit: contain;
-    }
-
-    .feature-card h3 {
-      margin: 0 0 14px;
-      color: #2c3a42;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    .feature-card p {
-      margin: 0;
-      color: #2e3840;
-      font-size: 15px;
-      line-height: 1.42;
-    }
-
-    .benefits {
-      padding: 0 0 28px;
-      background: #fff;
-    }
-
-    .benefit-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: min(675px, calc(100% - 60px));
-      margin: 58px auto 0;
-    }
-
-    .benefit-item {
-      display: flex;
-      gap: 58px;
-      align-items: center;
-    }
-
-    .benefit-item img {
-      width: 105px;
-      height: 105px;
-    }
-
-    .benefit-item h3 {
-      margin: 0 0 15px;
-      color: #192833;
-      font-size: 25px;
-      font-weight: 400;
-      line-height: 1.2;
-    }
-
-    .benefit-item p {
-      margin: 0;
-      color: #27333b;
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .collections {
-      padding: 0 0 35px;
-      background: #fff;
-    }
-
-    .collection-row {
-      display: flex;
-      justify-content: center;
-      gap: 124px;
-      width: min(1035px, calc(100% - 70px));
-      margin: 66px auto 0;
-    }
-
-    .collection-row img {
-      width: 461px;
-      height: 184px;
-      object-fit: cover;
-    }
-
-    .collection-note {
-      width: min(710px, calc(100% - 40px));
-      margin: 74px auto 0;
-      color: #899197;
-      font-size: 14px;
-      line-height: 1.35;
-      text-align: center;
-    }
-
-    .partners {
-      padding: 101px 0 45px;
-      background: #f5f5f5;
-    }
-
-    .partner-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: min(997px, calc(100% - 64px));
-      gap: 58px 176px;
-      margin: 35px auto 0;
-    }
-
-    .partner-grid img {
-      width: 215px;
-      height: 94px;
-      object-fit: contain;
-    }
-
-    .partner-note {
-      margin: 35px 0 0;
-      color: #2c3a42;
-      font-size: 15px;
-      text-align: center;
-    }
-
-    .partner-note a {
-      color: #178fd0;
-    }
-
-    .tag-section {
-      padding: 107px 0 55px;
-      background: #fff;
-    }
-
-    .tag-section .section-title {
-      color: #111;
-      font-size: 40px;
-    }
-
-    .tag-form {
-      display: flex;
-      width: 570px;
-      height: 48px;
-      margin: 61px auto 0;
-    }
-
-    .tag-form input {
-      flex: 1;
-      min-width: 0;
-      padding: 0 24px;
-      border: 1px solid #c9cfd3;
-      border-right: 0;
-      border-radius: 3px 0 0 3px;
-      color: #7b868c;
-      font: inherit;
-      outline: none;
-    }
-
-    .tag-form input::placeholder {
-      color: #8b949b;
-    }
-
-    .tag-form button {
-      width: 105px;
-      border: 0;
-      border-radius: 0 3px 3px 0;
-      color: #fff;
-      background: #2f80bf;
-      font: inherit;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .platforms {
-      padding: 132px 0 104px;
-      background: #eee;
-    }
-
-    .platform-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 190px;
-      margin: 65px auto 0;
-    }
-
-    .platform-row img {
-      width: 58px;
-      height: 25px;
-      object-fit: contain;
-      opacity: .86;
-    }
-
-    .platform-row img:last-child {
-      width: 38px;
-      height: 42px;
-    }
-
-    .footer {
-      min-height: 97px;
-      padding-top: 21px;
-      color: #6b7377;
-      background: #151e22;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    .footer-links {
-      margin-bottom: 16px;
-      color: #0086c8;
-    }
-
-    .footer-links a {
-      color: #0086c8;
-    }
-
-    .social {
-      color: #8a9195;
-      font-weight: 700;
-    }
-
-    .copyright span {
-      margin-left: 18px;
-    }
-
-    @media (max-width: 1050px) {
-      .video-row,
-      .feature-row,
-      .collection-row,
-      .platform-row {
-        gap: 34px;
-      }
-
-      .video-card {
-        flex-basis: 300px;
-      }
-
-      .video-thumb {
-        width: 300px;
-        height: 200px;
-      }
-
-      .partner-grid {
-        gap: 45px 95px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .topbar {
-        height: auto;
-        padding-bottom: 14px;
-      }
-
-      .topbar-inner,
-      .brand-nav,
-      .nav,
-      .account-nav,
-      .video-row,
-      .feature-row,
-      .collection-row,
-      .platform-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .brand-nav {
-        gap: 12px;
-      }
-
-      .nav,
-      .account-nav {
-        gap: 14px;
-        padding-top: 8px;
-      }
-
-      .hero {
-        min-height: 560px;
-      }
-
-      .hero-copy {
-        top: 110px;
-      }
-
-      .hero h1,
-      .section-title {
-        font-size: 34px;
-      }
-
-      .video-row,
-      .feature-row {
-        width: min(350px, calc(100% - 34px));
-      }
-
-      .video-card {
-        flex-basis: auto;
-        width: 100%;
-      }
-
-      .video-thumb {
-        width: 100%;
-        height: auto;
-      }
-
-      .benefit-item {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        text-align: center;
-      }
-
-      .collection-row img {
-        width: min(461px, 100%);
-        height: auto;
-      }
-
-      .partner-grid {
-        width: 215px;
-      }
-
-      .tag-form {
-        width: min(570px, calc(100% - 34px));
-      }
-
-      .platform-row {
-        gap: 35px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand-nav">
-        <a href="#" aria-label="ClipMine home">
-          <img class="logo" src="clipmine_logo_beta_226x50.png" alt="ClipMine beta">
-        </a>
-        <nav class="nav" aria-label="Main navigation">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-header__brand-area">
+        <a href="#"><img class="site-header__logo" src="clipmine_logo_beta_226x50.png" alt="ClipMine beta"></a>
+
+        <nav class="main-nav">
           <a href="#">Home</a>
           <a href="#">Help</a>
-          <a class="search-link" href="#">Search</a>
+          <a class="main-nav__search" href="#">Search</a>
         </nav>
       </div>
-      <nav class="account-nav" aria-label="Account navigation">
+
+      <nav class="account-nav">
         <a href="#">Blog</a>
         <a href="#">Log In</a>
         <a href="#">Sign up</a>
@@ -622,141 +28,132 @@
   </header>
 
   <main>
-    <section class="hero" aria-label="Intro">
-      <div class="hero-copy">
+    <section class="hero">
+      <div class="hero__content">
         <h1>A Better Video Experience for the<br>Web</h1>
         <p>ClipMine enables bloggers, creators and enthusiasts to tag content inside online videos and create a more engaging video experience.</p>
-        <a class="primary-button" href="#">Sign Up</a>
+        <a class="hero__button" href="#">Sign Up</a>
       </div>
-      <div class="hero-dots" aria-hidden="true">
-        <span class="dot is-active"></span>
-        <span class="dot"></span>
+
+      <div class="hero__dots">
+        <span class="hero__dot hero__dot--active"></span>
+        <span class="hero__dot"></span>
       </div>
     </section>
 
-    <section class="video-intro">
-      <h2 class="mini-title">Help your viewers discover what matters most to them!</h2>
+    <section class="video-preview">
+      <h2 class="section-title section-title--small">Help your viewers discover what matters most to them!</h2>
 
-      <div class="video-row">
+      <div class="video-preview__list">
         <article class="video-card">
-          <div class="small-placeholder" aria-hidden="true"></div>
-          <h3 class="video-title">@01:00:20 Greatest thing about Bill and Steve's Relationship....</h3>
-          <div class="meta-line">
-            <span class="meta-icon">&#9670;</span>
-            <span>4 people tagged</span>
-            <span class="meta-icon">&#10150;</span>
-            <span>170</span>
+          <div class="video-card__placeholder"></div>
+          <h3 class="video-card__title">@01:00:20 Greatest thing about Bill and Steve's Relationship....</h3>
+          <div class="video-card__meta">
+            <span>&#9670;</span><span>4 people tagged</span>
+            <span>&#10150;</span><span>170</span>
           </div>
-          <div class="action-bar">
+          <div class="video-card__actions">
             <span>Embed &lt;/&gt;</span>
-            <span><span class="action-icon">&#10150;</span> Share</span>
+            <span>&#10150; Share</span>
           </div>
         </article>
 
-        <article class="video-card center-card">
-          <img class="video-thumb" src="video-emma_280x187.png" alt="Emma Stone Lip Sync Battle">
-          <h3 class="video-title">@01:59 Hook: Emma Stone Greatest thing about Bill............</h3>
-          <div class="meta-line">
-            <span class="meta-icon">&#9670;</span>
-            <span>3 people tagged</span>
-            <span class="meta-icon">&#10150;</span>
-            <span>200</span>
+        <article class="video-card video-card--raised">
+          <img class="video-card__image" src="video-emma_280x187.png" alt="Emma Stone Lip Sync Battle">
+          <h3 class="video-card__title">@01:59 Hook: Emma Stone Greatest thing about Bill............</h3>
+          <div class="video-card__meta">
+            <span>&#9670;</span><span>3 people tagged</span>
+            <span>&#10150;</span><span>200</span>
           </div>
-          <div class="action-bar">
+          <div class="video-card__actions">
             <span>Embed &lt;/&gt;</span>
-            <span><span class="action-icon">&#10150;</span> Share</span>
+            <span>&#10150; Share</span>
           </div>
         </article>
 
         <article class="video-card">
-          <div class="small-placeholder" aria-hidden="true"></div>
-          <h3 class="video-title">@13:34 Real Pip-Boy with 2nd screen experience Emma Stone .....</h3>
-          <div class="meta-line">
-            <span class="meta-icon">&#9670;</span>
-            <span>2 people tagged</span>
-            <span class="meta-icon">&#10150;</span>
-            <span>305</span>
+          <div class="video-card__placeholder"></div>
+          <h3 class="video-card__title">@13:34 Real Pip-Boy with 2nd screen experience Emma Stone .....</h3>
+          <div class="video-card__meta">
+            <span>&#9670;</span><span>2 people tagged</span>
+            <span>&#10150;</span><span>305</span>
           </div>
-          <div class="action-bar">
+          <div class="video-card__actions">
             <span>Embed &lt;/&gt;</span>
-            <span><span class="action-icon">&#10150;</span> Share</span>
+            <span>&#10150; Share</span>
           </div>
         </article>
       </div>
 
-      <p class="video-note">ClipMine works great for sharing and embedding recorded video-game sessions,tutorials, product reviews,talk shows, speeches, lectures and sports coverage.Try out more samples</p>
+      <p class="section-note">ClipMine works great for sharing and embedding recorded video-game sessions,tutorials, product reviews,talk shows, speeches, lectures and sports coverage.Try out more samples</p>
     </section>
 
-    <section class="features">
+    <section class="features-section">
       <h2 class="section-title">Features</h2>
-      <div class="feature-row">
+
+      <div class="features-section__grid">
         <article class="feature-card">
-          <div class="feature-frame">
-            <img src="features/index-sharing_300x120.png" alt="Meaningful sharing">
-          </div>
-          <h3>Meaningful Sharing</h3>
+          <div class="feature-card__image-box"><img src="features/index-sharing_300x120.png" alt="Meaningful sharing"></div>
+          <h3 class="feature-card__title">Meaningful Sharing</h3>
           <p>ClipMine works great for sharing and embedding recorded video-game sessions,tutorials, product reviews, talk shows, speeches, lectures and sports coverage.Try out more samples</p>
         </article>
 
         <article class="feature-card">
-          <div class="feature-frame">
-            <img src="features/index-embeds_300x120.png" alt="Interactive embeds">
-          </div>
-          <h3>Interactive Embeds</h3>
+          <div class="feature-card__image-box"><img src="features/index-embeds_300x120.png" alt="Interactive embeds"></div>
+          <h3 class="feature-card__title">Interactive Embeds</h3>
           <p>Want to enable the ClipMine experience on your blog or Twitter feed? Just embed our Content-Aware Video Player. It is responsive and built to work across different modern browsers and devices. Start by tagging a video of your choice or pick an already tagged one and simply paste the embed code into your website.</p>
         </article>
 
         <article class="feature-card">
-          <div class="feature-frame">
-            <img src="features/index-tagging_300x120.png" alt="Smart tagging">
-          </div>
-          <h3>Smart Tagging</h3>
+          <div class="feature-card__image-box"><img src="features/index-tagging_300x120.png" alt="Smart tagging"></div>
+          <h3 class="feature-card__title">Smart Tagging</h3>
           <p>Found an interesting point in a video? On ClipMine, adding tags is not reserved for the video owners only - any community member can do it. In addition our smart algorithms can automatically suggest tags (in private beta) for a wide variety of videos!</p>
         </article>
       </div>
     </section>
 
-    <section class="benefits">
+    <section class="benefits-section">
       <h2 class="section-title">Benefits</h2>
-      <div class="benefit-list">
-        <article class="benefit-item">
-          <img src="benefits/index-benefit-personal_166x166.png" alt="Personalized experience">
+
+      <div class="benefits-section__list">
+        <article class="benefit-card">
+          <img class="benefit-card__image" src="benefits/index-benefit-personal_166x166.png" alt="Personalized experience">
           <div>
-            <h3>Personalized Experience</h3>
+            <h3 class="benefit-card__title">Personalized Experience</h3>
             <p>ClipMine allows your viewers to the video content and see what's inside, through it, and specific parts of the videos they like.</p>
           </div>
         </article>
 
-        <article class="benefit-item">
-          <img src="benefits/index-benefit-engagement_166x166.png" alt="Improved engagement">
+        <article class="benefit-card">
+          <img class="benefit-card__image" src="benefits/index-benefit-engagement_166x166.png" alt="Improved engagement">
           <div>
-            <h3>Improved Engagement</h3>
+            <h3 class="benefit-card__title">Improved Engagement</h3>
             <p>Our customers have seen up to 50% higher engagement and lower early drop-off rates on their videos when embedded with ClipMine.</p>
           </div>
         </article>
 
-        <article class="benefit-item">
-          <img src="benefits/index-benefit-analytics_166x166.png" alt="Actionable analytics">
+        <article class="benefit-card">
+          <img class="benefit-card__image" src="benefits/index-benefit-analytics_166x166.png" alt="Actionable analytics">
           <div>
-            <h3>Actionable Analytics</h3>
+            <h3 class="benefit-card__title">Actionable Analytics</h3>
             <p>Our in-video analytics (by invitation only) allow you to understand user engagement in terms of your content rather than timestamps. You'll exactly know which parts of the video are more likely to be clicked and how long users stay there.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="collections">
+    <section class="collections-section">
       <h2 class="section-title">ClipMine Video Collections</h2>
-      <div class="collection-row">
+      <div class="collections-section__grid">
         <img src="collections/collection-startup_460x184.png" alt="Startups">
         <img src="collections/collection-ml_461x184.png" alt="Machine learning">
       </div>
-      <p class="collection-note">These are curated lists of high quality online videos, tagged by ClipMine's smart algorithms and editors to demonstrate the usefulness of ClipMine.</p>
+      <p class="section-note section-note--muted">These are curated lists of high quality online videos, tagged by ClipMine's smart algorithms and editors to demonstrate the usefulness of ClipMine.</p>
     </section>
 
-    <section class="partners">
+    <section class="partners-section">
       <h2 class="section-title">Who's Using ClipMine?</h2>
-      <div class="partner-grid">
+      <div class="partners-section__grid">
         <img src="partners/partner-yc_215x94.png" alt="Y Combinator">
         <img src="partners/partner-blackbox_215x94.png" alt="Blackbox">
         <img src="partners/partner-ucf_215x94.png" alt="University of Central Florida">
@@ -764,20 +161,20 @@
         <img src="partners/partner-cv_215x94.png" alt="Computer Vision Talks">
         <img src="partners/partner-500startups_215x94.png" alt="500 Startups">
       </div>
-      <p class="partner-note">Want to embed videos on your website? <a href="#">content</a></p>
+      <p class="partners-section__note">Want to embed videos on your website? <a href="#">content</a></p>
     </section>
 
-    <section class="tag-section">
-      <h2 class="section-title">What would you like to tag?</h2>
-      <form class="tag-form" action="#">
-        <input type="text" placeholder="Paste a YouTube, Vimeo or Dailymotion video URL" aria-label="Video URL">
+    <section class="tag-tool">
+      <h2 class="section-title section-title--dark">What would you like to tag?</h2>
+      <form class="tag-form">
+        <input type="text" placeholder="Paste a YouTube, Vimeo or Dailymotion video URL">
         <button type="submit">TAG NOW</button>
       </form>
     </section>
 
-    <section class="platforms">
+    <section class="platforms-section">
       <h2 class="section-title">Supported Platforms</h2>
-      <div class="platform-row">
+      <div class="platforms-section__row">
         <img src="platforms/platform-youtube_115x50.png" alt="YouTube">
         <img src="platforms/platform-vimeo_115x50.png" alt="Vimeo">
         <img src="platforms/platform-dailymotion_115x50.png" alt="Dailymotion">
@@ -786,11 +183,11 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">Contact Us</a> | <a href="#">About Clipmine</a> | <a href="#">Blog</a> | <a href="#">Help Center</a> | <span class="social">f</span> <span class="social">t</span>
+  <footer class="site-footer">
+    <div class="site-footer__links">
+      <a href="#">Contact Us</a> | <a href="#">About Clipmine</a> | <a href="#">Blog</a> | <a href="#">Help Center</a> | <span class="site-footer__social">f</span> <span class="site-footer__social">t</span>
     </div>
-    <div class="copyright">&copy; 2016 ClipMine, Inc. <span>Terms of use</span> <span>Privacy policy</span></div>
+    <div class="site-footer__legal">&copy; 2016 ClipMine, Inc. <span>Terms of use</span> <span>Privacy policy</span></div>
   </footer>
 </body>
 </html>
