@@ -1,25 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClipMine</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
   <header class="site-header">
     <div class="site-header__inner">
-      <div class="site-header__brand-area">
-        <a href="#"><img class="site-header__logo" src="clipmine_logo_beta_226x50.png" alt="ClipMine beta"></a>
-
-        <nav class="main-nav">
+      <div class="site-header__brand-group">
+        <a href="#" aria-label="ClipMine home">
+          <img class="site-header__logo" src="clipmine_logo_beta_226x50.png" alt="ClipMine beta">
+        </a>
+        <nav class="site-header__menu" aria-label="Main navigation">
           <a href="#">Home</a>
           <a href="#">Help</a>
-          <a class="main-nav__search" href="#">Search</a>
+          <a class="site-header__search-link" href="#">Search</a>
         </nav>
       </div>
-
-      <nav class="account-nav">
+      <nav class="site-header__account-links" aria-label="Account navigation">
         <a href="#">Blog</a>
         <a href="#">Log In</a>
         <a href="#">Sign up</a>
@@ -28,132 +29,142 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero__content">
+
+    <section class="welcome-banner" aria-label="Intro">
+      <div class="welcome-banner__content">
         <h1>A Better Video Experience for the<br>Web</h1>
         <p>ClipMine enables bloggers, creators and enthusiasts to tag content inside online videos and create a more engaging video experience.</p>
-        <a class="hero__button" href="#">Sign Up</a>
+        <a class="welcome-banner__signup-btn" href="#">Sign Up</a>
       </div>
-
-      <div class="hero__dots">
-        <span class="hero__dot hero__dot--active"></span>
-        <span class="hero__dot"></span>
+      <div class="welcome-banner__dots" aria-hidden="true">
+        <span class="welcome-banner__dot welcome-banner__dot--active"></span>
+        <span class="welcome-banner__dot"></span>
       </div>
     </section>
 
-    <section class="video-preview">
-      <h2 class="section-title section-title--small">Help your viewers discover what matters most to them!</h2>
+    <section class="clip-preview">
+      <h2 class="section-subheading">Help your viewers discover what matters most to them!</h2>
 
-      <div class="video-preview__list">
-        <article class="video-card">
-          <div class="video-card__placeholder"></div>
-          <h3 class="video-card__title">@01:00:20 Greatest thing about Bill and Steve's Relationship....</h3>
-          <div class="video-card__meta">
-            <span>&#9670;</span><span>4 people tagged</span>
-            <span>&#10150;</span><span>170</span>
+      <div class="clip-preview__list">
+        <article class="clip-preview__card">
+          <div class="clip-preview__placeholder-icon" aria-hidden="true"></div>
+          <h3 class="clip-preview__title">@01:00:20 Greatest thing about Bill and Steve's Relationship....</h3>
+          <div class="clip-preview__meta">
+            <span class="clip-preview__meta-icon">&#9670;</span>
+            <span>4 people tagged</span>
+            <span class="clip-preview__meta-icon">&#10150;</span>
+            <span>170</span>
           </div>
-          <div class="video-card__actions">
+          <div class="clip-preview__actions">
             <span>Embed &lt;/&gt;</span>
-            <span>&#10150; Share</span>
+            <span><span class="clip-preview__action-icon">&#10150;</span> Share</span>
           </div>
         </article>
 
-        <article class="video-card video-card--raised">
-          <img class="video-card__image" src="video-emma_280x187.png" alt="Emma Stone Lip Sync Battle">
-          <h3 class="video-card__title">@01:59 Hook: Emma Stone Greatest thing about Bill............</h3>
-          <div class="video-card__meta">
-            <span>&#9670;</span><span>3 people tagged</span>
-            <span>&#10150;</span><span>200</span>
+        <article class="clip-preview__card clip-preview__card--featured">
+          <img class="clip-preview__thumbnail" src="video-emma_280x187.png" alt="Emma Stone Lip Sync Battle">
+          <h3 class="clip-preview__title">@01:59 Hook: Emma Stone Greatest thing about Bill............</h3>
+          <div class="clip-preview__meta">
+            <span class="clip-preview__meta-icon">&#9670;</span>
+            <span>3 people tagged</span>
+            <span class="clip-preview__meta-icon">&#10150;</span>
+            <span>200</span>
           </div>
-          <div class="video-card__actions">
+          <div class="clip-preview__actions">
             <span>Embed &lt;/&gt;</span>
-            <span>&#10150; Share</span>
+            <span><span class="clip-preview__action-icon">&#10150;</span> Share</span>
           </div>
         </article>
 
-        <article class="video-card">
-          <div class="video-card__placeholder"></div>
-          <h3 class="video-card__title">@13:34 Real Pip-Boy with 2nd screen experience Emma Stone .....</h3>
-          <div class="video-card__meta">
-            <span>&#9670;</span><span>2 people tagged</span>
-            <span>&#10150;</span><span>305</span>
+        <article class="clip-preview__card">
+          <div class="clip-preview__placeholder-icon" aria-hidden="true"></div>
+          <h3 class="clip-preview__title">@13:34 Real Pip-Boy with 2nd screen experience Emma Stone .....</h3>
+          <div class="clip-preview__meta">
+            <span class="clip-preview__meta-icon">&#9670;</span>
+            <span>2 people tagged</span>
+            <span class="clip-preview__meta-icon">&#10150;</span>
+            <span>305</span>
           </div>
-          <div class="video-card__actions">
+          <div class="clip-preview__actions">
             <span>Embed &lt;/&gt;</span>
-            <span>&#10150; Share</span>
+            <span><span class="clip-preview__action-icon">&#10150;</span> Share</span>
           </div>
         </article>
       </div>
 
-      <p class="section-note">ClipMine works great for sharing and embedding recorded video-game sessions,tutorials, product reviews,talk shows, speeches, lectures and sports coverage.Try out more samples</p>
+      <p class="clip-preview__note">ClipMine works great for sharing and embedding recorded video-game sessions,tutorials, product reviews,talk shows, speeches, lectures and sports coverage.Try out more samples</p>
     </section>
 
-    <section class="features-section">
-      <h2 class="section-title">Features</h2>
-
-      <div class="features-section__grid">
-        <article class="feature-card">
-          <div class="feature-card__image-box"><img src="features/index-sharing_300x120.png" alt="Meaningful sharing"></div>
-          <h3 class="feature-card__title">Meaningful Sharing</h3>
+    <section class="feature-highlights">
+      <h2 class="section-heading">Features</h2>
+      <div class="feature-highlights__list">
+        <article class="feature-highlights__card">
+          <div class="feature-highlights__icon-frame">
+            <img src="features/index-sharing_300x120.png" alt="Meaningful sharing">
+          </div>
+          <h3>Meaningful Sharing</h3>
           <p>ClipMine works great for sharing and embedding recorded video-game sessions,tutorials, product reviews, talk shows, speeches, lectures and sports coverage.Try out more samples</p>
         </article>
 
-        <article class="feature-card">
-          <div class="feature-card__image-box"><img src="features/index-embeds_300x120.png" alt="Interactive embeds"></div>
-          <h3 class="feature-card__title">Interactive Embeds</h3>
+        <article class="feature-highlights__card">
+          <div class="feature-highlights__icon-frame">
+            <img src="features/index-embeds_300x120.png" alt="Interactive embeds">
+          </div>
+          <h3>Interactive Embeds</h3>
           <p>Want to enable the ClipMine experience on your blog or Twitter feed? Just embed our Content-Aware Video Player. It is responsive and built to work across different modern browsers and devices. Start by tagging a video of your choice or pick an already tagged one and simply paste the embed code into your website.</p>
         </article>
 
-        <article class="feature-card">
-          <div class="feature-card__image-box"><img src="features/index-tagging_300x120.png" alt="Smart tagging"></div>
-          <h3 class="feature-card__title">Smart Tagging</h3>
+        <article class="feature-highlights__card">
+          <div class="feature-highlights__icon-frame">
+            <img src="features/index-tagging_300x120.png" alt="Smart tagging">
+          </div>
+          <h3>Smart Tagging</h3>
           <p>Found an interesting point in a video? On ClipMine, adding tags is not reserved for the video owners only - any community member can do it. In addition our smart algorithms can automatically suggest tags (in private beta) for a wide variety of videos!</p>
         </article>
       </div>
     </section>
 
-    <section class="benefits-section">
-      <h2 class="section-title">Benefits</h2>
-
-      <div class="benefits-section__list">
-        <article class="benefit-card">
-          <img class="benefit-card__image" src="benefits/index-benefit-personal_166x166.png" alt="Personalized experience">
+    <section class="perks">
+      <h2 class="section-heading">Benefits</h2>
+      <div class="perks__list">
+        <article class="perks__item">
+          <img src="benefits/index-benefit-personal_166x166.png" alt="Personalized experience">
           <div>
-            <h3 class="benefit-card__title">Personalized Experience</h3>
+            <h3>Personalized Experience</h3>
             <p>ClipMine allows your viewers to the video content and see what's inside, through it, and specific parts of the videos they like.</p>
           </div>
         </article>
 
-        <article class="benefit-card">
-          <img class="benefit-card__image" src="benefits/index-benefit-engagement_166x166.png" alt="Improved engagement">
+        <article class="perks__item">
+          <img src="benefits/index-benefit-engagement_166x166.png" alt="Improved engagement">
           <div>
-            <h3 class="benefit-card__title">Improved Engagement</h3>
+            <h3>Improved Engagement</h3>
             <p>Our customers have seen up to 50% higher engagement and lower early drop-off rates on their videos when embedded with ClipMine.</p>
           </div>
         </article>
 
-        <article class="benefit-card">
-          <img class="benefit-card__image" src="benefits/index-benefit-analytics_166x166.png" alt="Actionable analytics">
+        <article class="perks__item">
+          <img src="benefits/index-benefit-analytics_166x166.png" alt="Actionable analytics">
           <div>
-            <h3 class="benefit-card__title">Actionable Analytics</h3>
+            <h3>Actionable Analytics</h3>
             <p>Our in-video analytics (by invitation only) allow you to understand user engagement in terms of your content rather than timestamps. You'll exactly know which parts of the video are more likely to be clicked and how long users stay there.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="collections-section">
-      <h2 class="section-title">ClipMine Video Collections</h2>
-      <div class="collections-section__grid">
+    <section class="video-collections">
+      <h2 class="section-heading">ClipMine Video Collections</h2>
+      <div class="video-collections__list">
         <img src="collections/collection-startup_460x184.png" alt="Startups">
         <img src="collections/collection-ml_461x184.png" alt="Machine learning">
       </div>
-      <p class="section-note section-note--muted">These are curated lists of high quality online videos, tagged by ClipMine's smart algorithms and editors to demonstrate the usefulness of ClipMine.</p>
+      <p class="video-collections__note">These are curated lists of high quality online videos, tagged by ClipMine's smart algorithms and editors to demonstrate the usefulness of ClipMine.</p>
     </section>
 
-    <section class="partners-section">
-      <h2 class="section-title">Who's Using ClipMine?</h2>
-      <div class="partners-section__grid">
+    <section class="trusted-by">
+      <h2 class="section-heading">Who's Using ClipMine?</h2>
+      <div class="trusted-by__logos">
         <img src="partners/partner-yc_215x94.png" alt="Y Combinator">
         <img src="partners/partner-blackbox_215x94.png" alt="Blackbox">
         <img src="partners/partner-ucf_215x94.png" alt="University of Central Florida">
@@ -161,33 +172,35 @@
         <img src="partners/partner-cv_215x94.png" alt="Computer Vision Talks">
         <img src="partners/partner-500startups_215x94.png" alt="500 Startups">
       </div>
-      <p class="partners-section__note">Want to embed videos on your website? <a href="#">content</a></p>
+      <p class="trusted-by__note">Want to embed videos on your website? <a href="#">content</a></p>
     </section>
 
-    <section class="tag-tool">
-      <h2 class="section-title section-title--dark">What would you like to tag?</h2>
-      <form class="tag-form">
-        <input type="text" placeholder="Paste a YouTube, Vimeo or Dailymotion video URL">
+    <section class="tag-form-section">
+      <h2 class="section-heading">What would you like to tag?</h2>
+      <form class="tag-form-section__form" action="#">
+        <input type="text" placeholder="Paste a YouTube, Vimeo or Dailymotion video URL" aria-label="Video URL">
         <button type="submit">TAG NOW</button>
       </form>
     </section>
 
-    <section class="platforms-section">
-      <h2 class="section-title">Supported Platforms</h2>
-      <div class="platforms-section__row">
+    <section class="supported-platforms">
+      <h2 class="section-heading">Supported Platforms</h2>
+      <div class="supported-platforms__list">
         <img src="platforms/platform-youtube_115x50.png" alt="YouTube">
         <img src="platforms/platform-vimeo_115x50.png" alt="Vimeo">
         <img src="platforms/platform-dailymotion_115x50.png" alt="Dailymotion">
         <img src="platforms/platform-html5_115x50.png" alt="HTML5">
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__links">
-      <a href="#">Contact Us</a> | <a href="#">About Clipmine</a> | <a href="#">Blog</a> | <a href="#">Help Center</a> | <span class="site-footer__social">f</span> <span class="site-footer__social">t</span>
+      <a href="#">Contact Us</a> | <a href="#">About Clipmine</a> | <a href="#">Blog</a> | <a href="#">Help Center</a> | <span class="site-footer__social-icon">f</span> <span class="site-footer__social-icon">t</span>
     </div>
-    <div class="site-footer__legal">&copy; 2016 ClipMine, Inc. <span>Terms of use</span> <span>Privacy policy</span></div>
+    <div class="site-footer__copyright">&copy; 2016 ClipMine, Inc. <span>Terms of use</span> <span>Privacy policy</span></div>
   </footer>
+
 </body>
 </html>
